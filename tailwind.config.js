@@ -12,6 +12,13 @@ export default {
         "./resources/**/*.vue",
     ],
 
+    container: {
+        center: true,
+        padding: {
+            DEFAULT: "20px",
+        },
+    },
+
     theme: {
         extend: {
             fontFamily: {
