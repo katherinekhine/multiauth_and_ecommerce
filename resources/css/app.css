@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 .h1 {
-    @apply text-[24px] lg:text-[26px] font-bold leading-snug;
+  @apply text-[24px] lg:text-[26px] font-bold leading-snug;
 }
 
 /* .h2 {
   @apply text-[20px] lg:text-[25px] font-bold leading-snug;
 } */
 .h3 {
-    @apply text-[18px] lg:text-[21px] font-bold leading-snug;
+  @apply text-[18px] lg:text-[21px] font-bold leading-snug;
+}
+
+.btn {
+  @apply h-[40px] w-[150px] transition-all duration-300 text-[17px] font-medium rounded-[18px];
+}
+
+.btn-back {
+  @apply bg-slate-600;
 }
