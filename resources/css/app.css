@@ -13,10 +13,10 @@
   @apply text-[18px] lg:text-[21px] font-bold leading-snug;
 }
 
-.btn {
-  @apply h-[40px] w-[150px] transition-all duration-300 text-[17px] font-medium rounded-[18px];
+.btn-back {
+  @apply px-5 py-1 text-[16px] font-medium rounded-[10px] bg-slate-600 text-white;
 }
 
-.btn-back {
-  @apply bg-slate-600;
+.btn-create {
+  @apply px-5 py-1 text-[16px] font-medium rounded-[10px] bg-green-500 text-white;
 }

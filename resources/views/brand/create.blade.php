@@ -8,8 +8,8 @@
                 <input type="text" id="name" class="border w-full mt-1" placeholder="Enter Name...">
             </div>
             <div class="mb-3">
-                <a href="{{route('brands.index')}}" class="btn btn-back">Back</a>
-                <input type="submit" value="Create" class="btn">
+                <a href="{{route('brands.index')}}" type="button" class="btn-back">Back</a>
+                <input type="submit" value="Create" class="btn-create">
             </div>
         </form>
     </div>
