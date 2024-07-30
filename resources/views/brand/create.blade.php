@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="container pt-3 lg:px-40 md:px-6 px-5">
         <h1 class="h1 mb-3">Create New Brand</h1>
-        <form action="" method="POST">
+        <form action="{{ route('brands.store') }}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="name" class="font-medium block">Name:</label>
-                <input type="text" id="name" class="border w-full mt-1" placeholder="Enter Name...">
+                <input type="text" id="name" name="name" class="border w-full mt-1" placeholder="Enter Name...">
             </div>
             <div class="mb-3">
                 <a href="{{route('brands.index')}}" type="button" class="btn-back">Back</a>

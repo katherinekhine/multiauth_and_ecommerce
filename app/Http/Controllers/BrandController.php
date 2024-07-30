@@ -30,7 +30,12 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+        Brand::create($validated);
+
+        return redirect(route('brands.index'));
     }
 
     /**
