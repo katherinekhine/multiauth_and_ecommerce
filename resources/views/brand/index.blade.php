@@ -16,7 +16,7 @@
                         <tr>
                             <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{ $brand->id }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{ $brand->name }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2">
+                            <td class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 border-t border-gray-500">
                                 <a href="{{ route('brands.edit', $brand->id) }}" class=" text-blue-600">Edit</a> |
                                 <form action="{{ route('brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this brand?')" class=" text-red-600">
                                     @csrf
