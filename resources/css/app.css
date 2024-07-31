@@ -20,3 +20,7 @@
 .btn-create {
   @apply px-5 py-1 text-[16px] font-medium rounded-[10px] bg-green-500 text-white;
 }
+
+.btn-edit {
+  @apply px-5 py-1 text-[16px] font-medium rounded-[10px] bg-blue-500 text-white;
+}
