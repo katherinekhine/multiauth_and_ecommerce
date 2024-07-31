@@ -43,9 +43,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        return redirect(route('brands.show'), [
-            'brand' => $brand
-        ]);
+        //
     }
 
     /**
@@ -53,7 +51,9 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('brand.create', [
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -61,7 +61,11 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $brand->update($request->all());
+        return redirect(route('brands.index'));
     }
 
     /**
