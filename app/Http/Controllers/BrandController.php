@@ -43,7 +43,9 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return redirect(route('brands.show'), [
+            'brand' => $brand
+        ]);
     }
 
     /**
