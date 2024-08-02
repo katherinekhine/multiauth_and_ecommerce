@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -25,4 +26,5 @@ require __DIR__ . '/auth.php';
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 
 Route::resource('brands', BrandController::class);
+Route::resource('categories', CategoryController::class);
 Route::resource('products', ProductController::class);
