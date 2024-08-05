@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'name' => 'required',
             'brand_id' => 'required|exists:brands,id',
         ]);
-        Category::created($request->all());
+        Category::create($request->all());
         return redirect(route('categories.index'));
     }
 
