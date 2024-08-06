@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
