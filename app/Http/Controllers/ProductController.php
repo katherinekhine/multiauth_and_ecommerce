@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -25,7 +26,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create', [
-            'products' => new Product(),
+            'product' => new Product(),
             'brands' => Brand::all(),
             'categories' => Category::all(),
         ]);
@@ -34,7 +35,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         $photo_path = $request->file('photo')->store('photos');
         $request->validate([
