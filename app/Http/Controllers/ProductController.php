@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create', [
+            'products' => new Product(),
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -30,7 +36,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $photo_path = $request->file('photo')->store('photos');
+        $request->validate([
+            'name' => 'required',
+            'photo' => $photo_path,
+            'description' => 'required',
+            'price' => 'required',
+            'brand_id' => 'required|exists:brands,id',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        Product::create($request->all());
+        return redirect(route('products.index'));
     }
 
     /**
