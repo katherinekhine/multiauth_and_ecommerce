@@ -53,74 +53,18 @@ class DatabaseSeeder extends Seeder
 
         $category_1 = \App\Models\Category::create([
             'name' => 'Women Shoe',
-            'brand_id' => $brand_1->id,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         $category_2 = \App\Models\Category::create([
-            'name' => 'Women Shoe',
-            'brand_id' => $brand_2->id,
+            'name' => 'Men Shoe',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         $category_3 = \App\Models\Category::create([
-            'name' => 'Women Shoe',
-            'brand_id' => $brand_3->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $category_4 = \App\Models\Category::create([
-            'name' => 'Women Shoe',
-            'brand_id' => $brand_6->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $category_5 = \App\Models\Category::create([
-            'name' => 'Men Shoe',
-            'brand_id' => $brand_1->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $category_6 = \App\Models\Category::create([
-            'name' => 'Men Shoe',
-            'brand_id' => $brand_2->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        $category_7 = \App\Models\Category::create([
-            'name' => 'Men Shoe',
-            'brand_id' => $brand_3->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $category_8 = \App\Models\Category::create([
-            'name' => 'Men Shoe',
-            'brand_id' => $brand_4->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $category_9 = \App\Models\Category::create([
             'name' => 'Kid Shoe',
-            'brand_id' => $brand_1->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        $category_10 = \App\Models\Category::create([
-            'name' => 'Kid Shoe',
-            'brand_id' => $brand_2->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        $category_11 = \App\Models\Category::create([
-            'name' => 'Kid Shoe',
-            'brand_id' => $brand_3->id,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

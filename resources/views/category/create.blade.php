@@ -10,7 +10,7 @@
                 <label for="name" class="font-medium block">Name:</label>
                 <input type="text" id="name" name="name" class="border w-full mt-1" placeholder="Enter Name..." value="{{ old('name', $category->name) }}">
             </div>
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="brand_id" class="font-medium block">Brand:</label>
                 <select name="brand_id" id="brand_id" class="mt-1 w-full">
                     <option value="">-- Choose Brand --</option>
@@ -20,7 +20,7 @@
                         </option>
                     @endforeach
                 </select>
-            </div>
+            </div> --}}
             <div class="mb-3">
                 <a href="{{ route('categories.index') }}" type="button" class="btn-back">Back</a>
                 <input type="submit" value="{{ $category->exists ? 'Edit' : 'Create' }}" class="{{ $category->exists ? 'btn-edit' : 'btn-create' }}">

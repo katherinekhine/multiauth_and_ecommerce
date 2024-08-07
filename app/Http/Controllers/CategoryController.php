@@ -25,7 +25,7 @@ class CategoryController extends Controller
     {
         return view('category.create', [
             'category' => new Category(),
-            'brands' => Brand::all(),
+            // 'brands' => Brand::all(),
         ]);
     }
 
@@ -36,7 +36,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'brand_id' => 'required|exists:brands,id',
+            // 'brand_id' => 'required|exists:brands,id',
         ]);
         Category::create($request->all());
         return redirect(route('categories.index'));
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     {
         return view('category.create', [
             'category' => $category,
-            'brands' => Brand::all(),
+            // 'brands' => Brand::all(),
         ]);
     }
 
@@ -68,7 +68,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'brand_id' => 'required|exists:brands,id',
+            // 'brand_id' => 'required|exists:brands,id',
         ]);
         $category->update($request->all());
         return redirect(route('categories.index'));
