@@ -13,11 +13,11 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->hasMany(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 
     public function category()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -68,15 +69,31 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.create', [
+            'product' => $product,
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        if ($request->hasFile('photo')) {
+            $photo_path = $request->file('photo')->store('photos', 'public');
+            $product->photo = $photo_path;
+        }
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'photo' => $product->photo,
+            'price' => $request->price,
+            'brand_id' => $request->brand_id,
+            'category_id' => $request->category_id,
+        ]);
+        return redirect(route('products.index'));
     }
 
     /**
