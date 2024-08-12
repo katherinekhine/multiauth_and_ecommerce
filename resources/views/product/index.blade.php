@@ -14,15 +14,19 @@
                         <th class=" p-3 text-sm font-semibold tracking-wide text-white">Action</th>
                     </tr>
                 </thead>
-                {{-- <tbody class="border border-gray-500">
+                <tbody class="border border-gray-500">
                    @foreach ($products as $product)
                        <tr>
                         <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->id}}</td>
-                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$cat->name}}</td>
-                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$cat->brand->name}}</td>
+                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500 w-24">
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Image" height="20px">
+                        </td>
+                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->name}}</td>
+                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->description}}</td>
+                        <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->price}}</td>
                         <td class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 border-t border-gray-500">
-                            <a href="{{ route('categories.edit', ['category' => $cat]) }}" class=" text-blue-600">Edit</a> |
-                            <form action="{{ route('categories.destroy', ['category' => $cat]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Category?')" class=" text-red-600">
+                            <a href="{{ route('products.edit', ['product' => $product]) }}" class=" text-blue-600">Edit</a> |
+                            <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Product?')" class=" text-red-600">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Delete</button>
@@ -30,7 +34,7 @@
                         </td>
                        </tr>
                    @endforeach
-                </tbody> --}}
+                </tbody>
             </table>
         </div>
     </div>

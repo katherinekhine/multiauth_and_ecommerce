@@ -46,7 +46,7 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $photo_path = $request->file('photo')->store('photos');
+            $photo_path = $request->file('photo')->store('photos', 'public');
             $validatedData['photo'] = $photo_path;
         }
 

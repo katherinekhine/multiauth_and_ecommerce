@@ -14,7 +14,7 @@
                 <label for="photo" class="font-medium block">Photo:</label>
                 <input type="file" name="photo" id="photo" class="border w-full mt-1" {{ $product->exists ? '' : 'required' }}>
                 @if($product->exists && $product->photo)
-                    <img src="{{ asset('storage/' . $product->photo) }}" alt="" height="100px">
+                    <img src="{{ asset('storage/public' . $product->photo) }}" alt="" height="100px">
                 @endif
             </div>
             <div class="mb-3">
