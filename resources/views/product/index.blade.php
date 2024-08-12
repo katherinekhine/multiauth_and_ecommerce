@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container pt-3 lg:px-40 md:px-6 px-5">
+    <div class="container py-3 lg:px-40 md:px-6 px-5">
         <h1 class="h1">Product</h1>
         <a href="{{route('products.create')}}">+ Create New Product</a>
         <div class="mt-5">
