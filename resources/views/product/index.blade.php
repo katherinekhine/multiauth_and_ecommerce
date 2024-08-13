@@ -25,6 +25,7 @@
                         <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->description}}</td>
                         <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">{{$product->price}}</td>
                         <td class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 border-t border-gray-500">
+                            <a href="{{ route('products.show', ['product'=> $product])}}" class=" text-green-600">Show</a> |
                             <a href="{{ route('products.edit', ['product' => $product]) }}" class=" text-blue-600">Edit</a> |
                             <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this Product?')" class=" text-red-600">
                                 @csrf
