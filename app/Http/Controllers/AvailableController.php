@@ -58,7 +58,10 @@ class AvailableController extends Controller
      */
     public function edit(Available $available)
     {
-        //
+        return view('available.create', [
+            'available' => $available,
+            'product' => Product::all(),
+        ]);
     }
 
     /**
@@ -66,7 +69,15 @@ class AvailableController extends Controller
      */
     public function update(Request $request, Available $available)
     {
-        //
+        $validatedData = $request->validate([
+            'size' => 'required',
+            'color' => 'required',
+            'quantity' => 'required',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        $available->update($validatedData);
+        return redirect(route('availables.index'));
     }
 
     /**
