@@ -12,7 +12,9 @@ class AvailableController extends Controller
      */
     public function index()
     {
-        //
+        return view('available.index', [
+            'available' => Available::all()
+        ]);
     }
 
     /**
