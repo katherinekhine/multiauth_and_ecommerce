@@ -85,6 +85,7 @@ class AvailableController extends Controller
      */
     public function destroy(Available $available)
     {
-        //
+        $available->delete();
+        return redirect(route('availables.index'));
     }
 }
