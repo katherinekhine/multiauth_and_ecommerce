@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Available;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AvailableController extends Controller
@@ -22,7 +23,10 @@ class AvailableController extends Controller
      */
     public function create()
     {
-        //
+        return view('available.create', [
+            'available' => new Available(),
+            'product' => Product::all(),
+        ]);
     }
 
     /**
@@ -30,7 +34,15 @@ class AvailableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'size' => 'required',
+            'color' => 'required',
+            'quantity' => 'required',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        Available::create($validatedData);
+        return redirect(route('availables.index'));
     }
 
     /**
