@@ -10,4 +10,9 @@ class Available extends Model
     use HasFactory;
 
     protected $fillable = ['size', 'color', 'quantity', 'product_id'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
