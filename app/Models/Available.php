@@ -9,7 +9,7 @@ class Available extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['size', 'color', 'quantity', 'product_id'];
+    protected $fillable = ['size', 'color', 'quantity'];
 
     public function product()
     {
