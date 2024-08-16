@@ -29,4 +29,4 @@ Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['au
 Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('products', ProductController::class);
-// Route::resource('availables', AvailableController::class);
+Route::resource('availables', AvailableController::class);
