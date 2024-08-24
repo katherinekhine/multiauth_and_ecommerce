@@ -25,7 +25,7 @@ class AvailableController extends Controller
     {
         return view('available.create', [
             'available' => new Available(),
-            // 'product' => Product::all(),
+            'products' => Product::all(),
         ]);
     }
 
@@ -38,7 +38,7 @@ class AvailableController extends Controller
             'size' => 'required',
             'color' => 'required',
             'quantity' => 'required',
-            // 'product_id' => 'required|exists:products,id',
+            'product_id' => 'required|exists:products,id',
         ]);
 
         Available::create($validatedData);

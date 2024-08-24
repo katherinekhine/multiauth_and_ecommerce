@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('size');
             $table->string('color');
             $table->string('quantity');
-            // $table->string('product_id');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
@@ -24,6 +25,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
         Schema::dropIfExists('availables');
