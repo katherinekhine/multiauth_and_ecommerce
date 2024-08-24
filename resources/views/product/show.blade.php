@@ -3,14 +3,62 @@
         <h1 class="h1">Detail of Product</h1>
         <div class="mt-3 mb-3">
             <div class="mb-3 font-bold">
-                <h2 class="text-xl"> <span>Name:</span>  {{ $product->name }}</h2>
+                <h2 class="text-xl"> <span>Name:</span> {{ $product->name }}</h2>
                 <p class="text-sm mt-3"> <span>Description:</span> {{ $product->description }}</p>
                 <p class="text-sm mt-3">Price: ${{ $product->price }}</p>
                 <p class="text-sm mt-3">Category: {{ $product->category->name }}</p>
-                <p class="text-sm mt-3">Brand: {{ $product->brand->name}} </p>
+                <p class="text-sm mt-3">Brand: {{ $product->brand->name }} </p>
             </div>
-            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Image" class="w-48 h-48 object-cover rounded-lg">
+            <img src="{{ asset('storage/' . $product->photo) }}" alt="Product Image"
+                class="w-48 h-48 object-cover rounded-lg">
         </div>
-        <a href="{{ route('products.index')}}" class="btn-back">Back</a>
+        @if ($product->availables->count() > 0)
+            <div class="mt-5">
+                <table class="w-full">
+                    <thead class=" bg-slate-500 border border-gray-500">
+                        <tr>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">ID</th>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">Size</th>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">Color</th>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">Quantity</th>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">Product Name</th>
+                            <th class=" p-3 text-sm font-semibold tracking-wide text-white">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="border border-gray-500">
+                        @foreach ($product->availables as $available)
+                            <tr>
+                                <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                                    {{ $available->id }}</td>
+                                <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                                    {{ $available->size }}</td>
+                                <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                                    {{ $available->color }}</td>
+                                <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                                    {{ $available->quantity }}</td>
+                                <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                                    {{ $available->product->name }}</td>
+                                <td
+                                    class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 border-t border-gray-500">
+                                    <a href="{{ route('availables.edit', ['available' => $available]) }}"
+                                        class=" text-blue-600">Edit</a> |
+                                    <form action="{{ route('availables.destroy', ['available' => $available]) }}"
+                                        method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this Available?')"
+                                        class=" text-red-600">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <p>No product size and colour available</p>
+        @endif
+        <a href="{{ route('products.index') }}" class="btn-back">Back</a>
     </div>
 </x-app-layout>
