@@ -56,6 +56,26 @@ class ProductController extends Controller
         return redirect(route('products.index'));
     }
 
+    public function storeFromPurchase(StoreProductRequest $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'brand_id' => 'required|exists:brands,id',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        if ($request->hasFile('photo')) {
+            $photo_path = $request->file('photo')->store('photos', 'public');
+            $validatedData['photo'] = $photo_path;
+        }
+
+        Product::create($validatedData);
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      */

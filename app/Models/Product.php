@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->hasMany(Available::class);
     }
+
+    public function purchase()
+    {
+        return $this->hasMany(Purchase::class);
+    }
 }
