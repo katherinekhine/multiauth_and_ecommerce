@@ -7,10 +7,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserHomeController::class, 'index']);
+Route::get('/shopping-cart', [ShoppingCartController::class, 'index'])->name('shopping-cart');
 
 
 Route::get('/dashboard', function () {

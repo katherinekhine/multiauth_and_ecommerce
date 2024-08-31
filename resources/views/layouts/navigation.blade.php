@@ -40,7 +40,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     {{-- Shopping cart --}}
-                    <x-nav-link :href="route('products.index')" :active="request()->routeIs('products')">
+                    <x-nav-link :href="route('shopping-cart')" :active="request()->routeIs('shopping-cart')">
                         {{ __('Shopping cart') }}
                     </x-nav-link>
                 </div>
