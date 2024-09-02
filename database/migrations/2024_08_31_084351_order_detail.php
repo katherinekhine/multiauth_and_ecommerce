@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_details', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_order_id');
+            $table->id(); // This is an unsignedBigInteger by default
+            $table->unsignedBigInteger('order_id'); // Ensure this is unsignedBigInteger
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
             $table->decimal('price', 8, 2);
             $table->timestamps();
 
-            $table->foreign('product_order_id')->references('id')->on('product_orders');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');
         });
     }

@@ -35,14 +35,16 @@
                         <h1 class="h1 mb-3">{{ $product->name }}</h1>
                         <p class="text-sm">{{ $product->description }}</p>
                         <p class="text-sm">Price: ${{ $product->price }}</p>
+                        <p class="text-sm">Quantity: {{ $product->availables->count() }}</p>
                         <p class="text-sm">Category: {{ $product->category->name }}</p>
                         <p class="text-sm">Brand: {{ $product->brand->name }}</p>
                     </div>
-                    <button
+                    <button {{ $product->availables->count() > 0 ? '' : 'disabled' }}
                         class="add-to-cart-button bg-neutral-700 text-white p-2 rounded-lg disabled:bg-neutral-500 disabled:text-gray-100"
-                        data-id="{{ $product->id }}" data-name="{{ $product->name }}"
-                        data-price="{{ $product->price }}" data-photo="{{ $product->photo }}"
-                        data-category="{{ $product->category->name }}" data-brand="{{ $product->brand->name }}">
+                        data-id="{{ $product->id }}" data-quantity="{{ $product->availables->count() }}"
+                        data-name="{{ $product->name }}" data-price="{{ $product->price }}"
+                        data-photo="{{ $product->photo }}" data-category="{{ $product->category->name }}"
+                        data-brand="{{ $product->brand->name }}">
                         Add To Cart
                     </button>
                 </div>
@@ -68,13 +70,18 @@
             // Add event listeners to all add-to-cart buttons
             buttons.forEach(button => {
                 button.addEventListener("click", function() {
+
+                    if (button.getAttribute('data-quantity') <= 0) {
+                        return;
+                    }
                     const productData = {
                         id: button.getAttribute('data-id'),
                         name: button.getAttribute('data-name'),
                         price: button.getAttribute('data-price'),
                         photo: button.getAttribute('data-photo'),
                         category: button.getAttribute('data-category'),
-                        brand: button.getAttribute('data-brand')
+                        brand: button.getAttribute('data-brand'),
+                        quantity: button.getAttribute('data-quantity')
                     };
 
                     // Add the product to the cart array

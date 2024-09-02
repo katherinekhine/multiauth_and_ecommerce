@@ -4,7 +4,7 @@
         <div id="shopping-cart-parent-container">
             <!-- Products will be dynamically inserted here -->
         </div>
-        <button>Order</button>
+        <button id="order-btn">Order</button>
     </div>
 
     <script>
@@ -38,6 +38,31 @@
 
                 // Append the product to the shopping cart container
                 shoppingCartParentContainer.appendChild(shoppingCart);
+            });
+
+            // Button
+            document.getElementById('order-btn').addEventListener('click', function() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                fetch('/order', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute(
+                                    'content')
+                        },
+                        body: JSON.stringify({
+                            cart
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        // Clear the cart
+                        localStorage.removeItem('cart');
+                    })
+                    .catch(error => console.error('Error:', error));
             });
 
         });
