@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -13,10 +15,12 @@ class OrderController extends Controller
         // Get cart data from localStorage
         $cart = $request->cart;
 
-        // Calculate total amount
         $totalAmount = array_reduce($cart, function ($carry, $item) {
             return $carry + ($item['price'] * $item['quantity']);
         }, 0);
+
+        // Format totalAmount properly
+        $totalAmount = round($totalAmount, 2);
 
         // Create a new order
         $order = Order::create([
@@ -24,14 +28,28 @@ class OrderController extends Controller
             'total_amount' => $totalAmount,
         ]);
 
-        // Create order details
+        // Process each cart item and create order details
         foreach ($cart as $item) {
-            OrderDetail::create([
-                'order_id' => $order->id,
-                'product_id' => $item['id'],
-                'quantity' => $item['quantity'],
-                'price' => $item['price'],
-            ]);
+            // Find the product in the products table
+            $product = Product::find($item['id']);
+
+            // Check if enough quantity is available
+            if ($product && $product->quantity >= $item['quantity']) {
+                // Reduce product quantity
+                $product->quantity -= $item['quantity'];
+                $product->save();
+
+                // Create order details
+                OrderDetail::create([
+                    'order_id' => $order->id,
+                    'product_id' => $item['id'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                ]);
+            } else {
+                // Return an error if there's not enough stock
+                return response()->json(['message' => 'Not enough stock available for ' . $item['name']], 400);
+            }
         }
 
         // Return success response

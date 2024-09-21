@@ -42,6 +42,9 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
+            'size' => 'required',
+            'color' => 'required',
+            'quantity' => 'required',
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
         ]);
@@ -62,6 +65,9 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
+            'size' => 'required',
+            'color' => 'required',
+            'quantity' => 'required',
             'brand_id' => 'required|exists:brands,id',
             'category_id' => 'required|exists:categories,id',
         ]);
@@ -112,6 +118,9 @@ class ProductController extends Controller
             'description' => $request->description,
             'photo' => $product->photo,
             'price' => $request->price,
+            'size' => $request->size,
+            'color' => $request->color,
+            'quantity' => $request->quantity,
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
         ]);

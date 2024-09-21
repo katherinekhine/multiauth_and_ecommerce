@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('description');
             $table->string('price');
             $table->string('brand_id');
+            $table->string('size')->default('default');
+            $table->string('color')->default('default');
+            $table->string('quantity')->default(0);
             $table->string('category_id');
             $table->timestamps();
         });

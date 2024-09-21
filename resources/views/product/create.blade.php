@@ -1,19 +1,22 @@
 <x-app-layout>
     <div class="container pt-3 lg:px-40 md:px-6 px-5">
         <h1 class="h1 mb-3">{{ $product->exists ? 'Edit Product' : 'Create New Product' }}</h1>
-        <form action="{{ $product->exists ? route('products.update', $product) : route('products.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ $product->exists ? route('products.update', $product) : route('products.store') }}"
+            method="post" enctype="multipart/form-data">
             @csrf
-            @if($product->exists)
+            @if ($product->exists)
                 @method('PUT')
             @endif
             <div class="mb-3">
                 <label for="name" class="font-medium block">Name:</label>
-                <input type="text" id="name" name="name" required class="border w-full mt-1" placeholder="Enter Name..." value="{{ old('name', $product->name) }}">
+                <input type="text" id="name" name="name" required class="border w-full mt-1"
+                    placeholder="Enter Name..." value="{{ old('name', $product->name) }}">
             </div>
             <div class="mb-3">
                 <label for="photo" class="font-medium block">Photo:</label>
-                <input type="file" name="photo" id="photo" class="border w-full mt-1" {{ $product->exists ? '' : 'required' }}>
-                @if($product->exists && $product->photo)
+                <input type="file" name="photo" id="photo" class="border w-full mt-1"
+                    {{ $product->exists ? '' : 'required' }}>
+                @if ($product->exists && $product->photo)
                     <img src="{{ asset('storage/' . $product->photo) }}" alt="photo" width="200px" class="mt-2">
                 @endif
             </div>
@@ -23,7 +26,23 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="font-medium block">Price:</label>
-                <input type="text" id="price" name="price" required class="border w-full mt-1" placeholder="Enter Price..." value="{{ old('price', $product->price) }}">
+                <input type="text" id="price" name="price" required class="border w-full mt-1"
+                    placeholder="Enter Price..." value="{{ old('price', $product->price) }}">
+            </div>
+            <div class="mb-3">
+                <label for="size" class="font-medium block">Size:</label>
+                <input type="text" id="size" name="size" class="border w-full mt-1"
+                    placeholder="Enter Size..." value="{{ old('size', $product->size) }}">
+            </div>
+            <div class="mb-3">
+                <label for="color" class="font-medium block">Color:</label>
+                <input type="text" id="color" name="color" class="border w-full mt-1"
+                    placeholder="Enter Color..." value="{{ old('color', $product->color) }}">
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="font-medium block">Quantity:</label>
+                <input type="text" id="quantity" name="quantity" class="border w-full mt-1"
+                    placeholder="Enter Quantity..." value="{{ old('quantity', $product->quantity) }}">
             </div>
             <div class="mb-3">
                 <label for="brand_id" class="font-medium block">Brand:</label>
@@ -49,7 +68,8 @@
             </div>
             <div class="mb-3">
                 <a href="{{ route('products.index') }}" type="button" class="btn-back">Back</a>
-                <input type="submit" value="{{ $product->exists ? 'Edit' : 'Create' }}" class="{{ $product->exists ? 'btn-edit' : 'btn-create' }}">
+                <input type="submit" value="{{ $product->exists ? 'Edit' : 'Create' }}"
+                    class="{{ $product->exists ? 'btn-edit' : 'btn-create' }}">
             </div>
         </form>
     </div>
