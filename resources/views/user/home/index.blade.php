@@ -45,15 +45,18 @@
                             <p class="text-sm mb-1">Size: {{ $product->size }}</p>
                             <p class="text-sm mb-1">Available: {{ $product->quantity }}</p>
 
-                            <button {{ $product->quantity > 0 ? '' : 'disabled' }}
-                                class="mt-3 add-to-cart-button bg-neutral-700 text-white p-2 rounded-lg disabled:bg-neutral-500 disabled:text-gray-100"
-                                data-id="{{ $product->id }}" data-quantity="{{ $product->quantity }}"
-                                data-name="{{ $product->name }}" data-price="{{ $product->price }}"
-                                data-photo="{{ $product->photo }}" data-category="{{ $product->category->name }}"
-                                data-brand="{{ $product->brand->name }}" data-size="{{ $product->size }}"
-                                data-color="{{ $product->color }}">
-                                Add To Cart
-                            </button>
+                            @auth
+                                <button {{ $product->quantity > 0 ? '' : 'disabled' }}
+                                    class="mt-3 add-to-cart-button bg-neutral-700 text-white p-2 rounded-lg disabled:bg-neutral-500 disabled:text-gray-100"
+                                    data-id="{{ $product->id }}" data-quantity="{{ $product->quantity }}"
+                                    data-name="{{ $product->name }}" data-price="{{ $product->price }}"
+                                    data-photo="{{ $product->photo }}" data-category="{{ $product->category->name }}"
+                                    data-brand="{{ $product->brand->name }}" data-size="{{ $product->size }}"
+                                    data-color="{{ $product->color }}">
+                                    Add To Cart
+                                </button>
+                            @endauth
+
                         </div>
                     </div>
                 @endforeach
