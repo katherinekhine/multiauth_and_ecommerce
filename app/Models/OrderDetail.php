@@ -11,8 +11,16 @@ class OrderDetail extends Model
 
     protected $fillable = ['order_id', 'product_id', 'quantity', 'price'];
 
-    public function productOrder()
+
+    // OrderDetail belongs to an Order
+    public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    // OrderDetail belongs to a Product (assuming you have a Product model)
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }
