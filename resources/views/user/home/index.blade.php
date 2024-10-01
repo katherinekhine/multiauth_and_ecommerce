@@ -62,7 +62,54 @@
                 @endforeach
             </div>
         </section>
+
     </div>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-4">About Us</h3>
+                    <p class="text-gray-400 text-sm">We are passionate about delivering high-quality products and
+                        exceptional customer service. Our mission is to make your shopping experience enjoyable and
+                        satisfying.</p>
+                </div>
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="text-gray-400 text-sm">
+                        <li class="mb-2"><a href="#" class="hover:text-white transition duration-300">Home</a>
+                        </li>
+                        <li class="mb-2"><a href="#"
+                                class="hover:text-white transition duration-300">Products</a></li>
+                        <li class="mb-2"><a href="#" class="hover:text-white transition duration-300">About</a>
+                        </li>
+                        <li class="mb-2"><a href="#"
+                                class="hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="text-gray-400 text-sm">
+                        <li class="mb-2">123 Main Street, City, Country</li>
+                        <li class="mb-2">Phone: +1 234 567 890</li>
+                        <li class="mb-2">Email: info@example.com</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 text-sm mb-4">Stay updated with our latest offers and products.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="bg-gray-700 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-md transition duration-300">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">&copy; {{ date('Y') }} ShoeShack </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
