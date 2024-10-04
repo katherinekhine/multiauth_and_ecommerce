@@ -74,7 +74,7 @@
                             <h1 class="h1 mb-3">{{ $product->name }}</h1>
                             <p class="text-sm mb-1">{{ $product->description }}</p>
                             <p class="text-sm mb-1">Price: ${{ $product->price }}</p>
-                            <p class="text-sm mb-1">Quantity: {{ $product->availables->count() }}</p>
+                            {{-- <p class="text-sm mb-1">Quantity: {{ $product->availables->count() }}</p> --}}
                             <p class="text-sm mb-1">Category: {{ $product->category->name }}</p>
                             <p class="text-sm mb-1">Brand: {{ $product->brand->name }}</p>
                             <p class="text-sm mb-1">Color: {{ $product->color }}</p>
