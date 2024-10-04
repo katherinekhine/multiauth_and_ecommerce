@@ -1,5 +1,41 @@
 <x-app-layout>
-    <div class="container pt-3 lg:px-40 md:px-6 px-5">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/shoes_banner_1.jpg') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/shoes_banner_2.jpg') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/shoes_banner_3.png') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/Puma_Men_shoe.jpg') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/running_shoes_images.jpg') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/shoe_1.jpg') }}" alt="Product Image">
+            </div>
+            <div class="swiper-slide">
+                <img src="{{ asset('storage/shoe_imags/shoe_2.jpg') }}" alt="Product Image">
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+
+    </div>
+
+    <div class="container mx-auto pt-3 lg:px-40 md:px-6 px-5">
         {{-- Brand --}}
         <section class="mb-10">
             <h2 class="mb-4 text-2xl">Brand</h2>
@@ -27,7 +63,7 @@
         {{-- Product --}}
         <section class="mb-10">
             <h2 class="mb-4 text-2xl">Products</h2>
-            <div class="grid grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach ($products as $product)
                     <div class="border">
                         <div>
@@ -110,6 +146,35 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.swiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
+                autoplay: true,
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // And if we need scrollbar
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            });
+
+        });
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
