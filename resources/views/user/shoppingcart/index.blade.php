@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <h1 class="text-3xl font-semibold mb-8">Your Shopping Cart</h1>
-        <div id="shopping-cart-parent-container" class="space-y-6 mb-8">
+        <a href="#" class=" text-cyan-600 underline">Help</a>
+        <div id="shopping-cart-parent-container" class="space-y-6 mb-8 mt-3">
             <!-- Products will be dynamically inserted here -->
         </div>
         <div id="cart-summary" class="bg-gray-100 p-6 rounded-lg mb-6">
