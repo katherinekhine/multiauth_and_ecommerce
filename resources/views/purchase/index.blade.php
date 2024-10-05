@@ -10,8 +10,8 @@
                         <th class=" p-3 text-sm font-semibold tracking-wide text-white">Supplier Name</th>
                         <th class=" p-3 text-sm font-semibold tracking-wide text-white">Product Name</th>
                         <th class=" p-3 text-sm font-semibold tracking-wide text-white">Product Price</th>
-                        <th class=" p-3 text-sm font-semibold tracking-wide text-white">Total Quantity</th>
-                        <th class=" p-3 text-sm font-semibold tracking-wide text-white">Total Price</th>
+                        {{-- <th class=" p-3 text-sm font-semibold tracking-wide text-white">Total Quantity</th>
+                        <th class=" p-3 text-sm font-semibold tracking-wide text-white">Total Price</th> --}}
                         <th class=" p-3 text-sm font-semibold tracking-wide text-white">Action</th>
                     </tr>
                 </thead>
@@ -27,10 +27,10 @@
 
                             <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
                                 {{ $purchase->product->price }}</td>
-                            <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
+                            {{-- <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
                                 {{ $purchase->product->availables->sum('quantity') }}</td>
                             <td class="p-3 text-sm font-semibold tracking-wide text-center border border-gray-500">
-                                {{ $purchase->product->price * $purchase->product->availables->sum('quantity') }}</td>
+                                {{ $purchase->product->price * $purchase->product->availables->sum('quantity') }}</td> --}}
                             <td
                                 class="p-3 text-sm font-semibold tracking-wide flex items-center justify-center gap-2 border-t border-gray-500">
                                 <a href="{{ route('purchases.show', ['purchase' => $purchase]) }}"
